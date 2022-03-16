@@ -1,8 +1,6 @@
 <template>
+<div class="container1">
   <div class="navbar">
- <section class="header">
-     <div class="overlay">
-         <!-- <div class="row"> -->
             <div class="navbar navbar-default">
             <div class="container-fluid">
             <div class="navbar-header">
@@ -13,7 +11,7 @@
             <span class="icon-bar"></span>
             </button>
             <div class="navlogo col-lg-2">
-            <a class="navbar-brand" href="#">Explore.Booking</a>
+            <router-link class="navbar-brand" to="/">Explore.Booking</router-link>
             </div>   
             </div>
             
@@ -21,31 +19,22 @@
               <div class="move container">
               <div class="col-lg-8">
               <ul class="nav navbar-nav nav-links">
-              <li><a href="#">Home</a></li>
-              <li><a href="#">Venues</a></li>
-              <li><a href="#">About</a></li>
-              <li><a href="#">Contact</a></li>
+              <li><router-link to="/">Home</router-link></li>
+              <!-- <li><router-link to="/about">About</router-link></li> -->
+              <li><router-link to="/places">Explore!</router-link></li>
+              <li><router-link to="/contact">Contact</router-link></li>
             </ul>
               <div class="search-wrap">
-                <input ref="input" v-model="searchText" class="search-input" placeholder="Search" :class="{ active }" @focus="onFocus" @blur="onBlur" @keyup.enter="onEnter">
+                <input ref="input" class="search-input" placeholder="Search">
+              <router-link to='/user/login'><button class='loginBtn'>Login</button></router-link>
               </div>
                 </div>
               </div>
-        <!-- </div> -->
+            </div>
+            </div>
       </div>
-    </div>
-  </div>                
+  </div>
 </div>
-    <div class="container">
-      <div class="text">
-        <h1 class="display-1">Lorem ipsum dolor sit amet,<br> consectetur adipiscing elit. <br>Phasellus scelerisque dui quis sapien auctor, <br>a pellentesque lorem vehicula. Etiam vel metus tincidunt, <br>eleifend felis a, finibus ex. Nam a metus.</h1>
-        </div>
-    </div>
-                                    
-<div class='btn first'>Explore</div>
-        </section>
-      </div>
-  
 </template>
 
 <script>
@@ -55,82 +44,62 @@ export default {
 </script>
 
 <style>
-  
-.header{
-    background: url("https://images.unsplash.com/photo-1621293954908-907159247fc8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80") center center fixed;
-    color: #FFF;
-    height: 100vh;
-    position: relative;
-    background-size: cover;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    -msn-background-size: cover;
-}
-.header .overlay{
-    background: rgba(0, 0, 0, 0.58);
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    overflow-x: hidden;
+.container1{
+  width: 100%;
+  background-color: gray;
 }
 
-.header .navbar-default {
+.navbar {
+  min-height: 50px;
+  margin-bottom: 0px;
+  background-color: gray
+}
+
+.navbar-default {
 	background-color:transparent !important;
 	border-color:transparent;
 	background-image:none;
 	box-shadow:none;	
 }
-.header .navbar-default .navbar-brand{
+.navbar-default .navbar-brand{
     font-size: 30px;
     font-weight: bold;
     color: #FFF;
     font-family: 'Montserrat', sans-serif;
 }
 
-.header .navbar-default .navbar-nav>li>a {
+.navbar-default .navbar-nav>li>a {
    font-size:20px; 
    color:#fff; 
     border-bottom: 1px solid transparent
 }
-.header .navbar-default .navbar-nav>li:hover a{
+.navbar-default .navbar-nav>li:hover a{
     color: #fff;
      border-bottom: 1px solid #FFF
 }
 
-
-.header .navbar-toggle {
+.navbar-toggle {
       margin:10px 0; 
       background:#c7c7c7; 
       color:#FFF;
 }
 
 .col-lg-8 {
-    font-variant: small-caps;
+    font-family: system-ui;
     margin-left: end;
 }
 
-.header .navbar-nav navbar-right{
+.navbar-nav navbar-right{
   color:#FFF;
 }
 
-.text {
-  position: absolute;
-  bottom: 89px;
-  left: 16px;
-}
-
-.display {
-  text-align: left;
-}
-
 .search-wrap {
-  position: relative;
-  z-index: 2;
+  /* position: relative; */
+  /* z-index: 2; */
   top: 14px;
   flex-wrap: wrap;
+  text-align: center;
+  margin-top: 10px;
 }
 .search-wrap .search-icon {
   position: absolute;
@@ -154,11 +123,11 @@ export default {
 .search-wrap .search-input {
   /* width: 100%; */
   height: 30px;
-  background: rgba(199, 199, 199, 0.15);
+  /* background: rgba(199, 199, 199, 0.15); */
   border-radius: 100px;
   border: none;
   box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.28);
-  color: #ffffff;
+  color: #000000;
   outline: none;
   padding: 0 10px 0 40px;
   transition: padding 0.3s ease-in-out, background 0.1s ease;
@@ -170,7 +139,7 @@ export default {
 }
 @media (hover: hover) {
   .search-wrap .search-input:not(.active):hover {
-    background: rgba(199, 199, 199, 0.3);
+    background: #FFF;
   }
 }
 .search-wrap ::-moz-placeholder {
@@ -184,7 +153,7 @@ export default {
   opacity: 1;
 }
 .search-wrap ::placeholder {
-  color: #c7c7c7;
+  color: #000000;
   font-family: "Montserrat", sans-serif;
   opacity: 1;
 }
@@ -273,25 +242,22 @@ export default {
   position: absolute;
 }
 
-.btn {
-  position: absolute;
-  bottom: 40px;
-  left: 16px;
-  cursor: pointer;
-  padding: 10px 30px;
-  font-size: 0.85em;
-  transition: all 0.25s ease-in-out;
-  border: 1px solid white;
-}
-
-.first {
-  box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.3);
+.loginBtn {
+  width: 10rem;
+  height: 3rem;
+  font-size:115%;
+  background-color: #fd6347;
   color: white;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  border-style: none;
+  transition: all .1s ease-in-out;
+  border-radius: 75px;
+  margin-left: 5px;
 }
+.loginBtn:hover {
+  text-size: 100%;
+  box-shadow: 1px 1px 1px 1px gray;
+  transform: scale(1.01);
 
-.first:hover {
-  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.3);
-  background: #c7c7c7;
-  color: black;
 }
 </style>

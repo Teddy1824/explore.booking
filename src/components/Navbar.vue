@@ -20,7 +20,6 @@
               <div class="col-lg-8">
               <ul class="nav navbar-nav nav-links">
               <li><router-link to="/">Home</router-link></li>
-              <!-- <li><router-link to="/about">About</router-link></li> -->
               <li><router-link to="/places">Explore!</router-link></li>
               <li><router-link to="/contact">Contact</router-link></li>
             </ul>
@@ -33,6 +32,11 @@
             </div>
             </div>
       </div>
+   <router-view v-slot="{ Component }">
+    <transition name="route" mode="out-in">
+      <component :is="Component"></component>
+    </transition>
+  </router-view>
   </div>
 </div>
 </template>
@@ -248,7 +252,7 @@ export default {
   font-size:115%;
   background-color: #fd6347;
   color: white;
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-family: system-ui;
   border-style: none;
   transition: all .1s ease-in-out;
   border-radius: 75px;
@@ -258,6 +262,23 @@ export default {
   text-size: 100%;
   box-shadow: 1px 1px 1px 1px gray;
   transform: scale(1.01);
-
 }
+
+.route-enter-from {
+    opacity: 0.5;
+    transform: translateX(100px);
+  }
+
+  .route-enter-active {
+    transition: all 0.3s ease-out;
+  }
+
+  .route-leave-to {
+    opacity: 1;
+    transform: translateY(-100px);
+  }
+
+  .route-leave-active {
+    transition: all 0.3s ease-in;
+  }
 </style>

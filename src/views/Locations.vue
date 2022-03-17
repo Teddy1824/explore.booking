@@ -1,21 +1,5 @@
 <template>
   <section class="header2">
-      <!-- <div class="container" style="padding-top: 10px">
-    <div class="row">
-      <div v-for="place in places" :key="place.id" class="col-sm">
-        
-        <div class="card" style="width: 20rem;">
-          <img class="card-img-top" v-bind:src="place.img" v-bind:alt="card.title">
-          <div class="card-block">
-            <h4 class="card-title">{{place.place}}</h4>
-            <p class="card-text">{{place.description}}</p>
-            <a href="#" class="btn btn-primary">Button</a>
-          </div>
-        </div>
-        
-      </div>
-    </div>
-  </div> -->
     <div class="container">
       <div class="row">
         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" v-for="place in places" :key="place.id">

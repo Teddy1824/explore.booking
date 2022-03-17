@@ -5,15 +5,15 @@
 	<div class="login-html">
 		<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
 		<input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
-		<div class="login-form">
+		<div @submit.prevent="login" class="login-form">
 			<div class="sign-in-htm">
 				<div class="group">
 					<label for="user" class="label">Username</label>
-					<input id="user" type="text" class="input">
+					<input v-model="username" id="user" type="text" class="input">
 				</div>
 				<div class="group">
 					<label for="pass" class="label">Password</label>
-					<input id="pass" type="password" class="input" data-type="password">
+					<input v-model="password" id="pass" type="password" class="input" data-type="password">
 				</div>
 				<!-- <div class="group">
 					<input id="check" type="checkbox" class="check" checked>
@@ -27,18 +27,18 @@
 			     <label for="tab-2">Not a member?, click here to be a member.</label>
 				</div>
 			</div>
-			<div class="sign-up-htm">
+			<div @submit.prevent="register" class="sign-up-htm">
 				<div class="group">
 					<label for="user" class="label">Username</label>
-					<input id="user" type="text" class="input">
+					<input v-model="username" id="user" type="text" class="input">
 				</div>
 				<div class="group">
 					<label for="pass" class="label">Password</label>
-					<input id="pass" type="password" class="input" data-type="password">
+					<input v-model="password" id="pass" type="password" class="input" data-type="password">
 				</div>
 				<div class="group">
 					<label for="pass" class="label">Email Address</label>
-					<input id="pass" type="text" class="input">
+					<input v-model="email" id="pass" type="text" class="input">
 				</div>
 				<div class="group">
 					<input type="submit" class="button" value="Sign Up">
@@ -57,7 +57,7 @@
 
 <script>
 export default {
-
+   
 }
 </script>
 
@@ -89,7 +89,6 @@ a{color:inherit;text-decoration:none}
 	max-width:525px;
 	min-height:670px;
 	position:relative;
-	/* background:url(https://raw.githubusercontent.com/khadkamhn/day-01-login-form/master/img/bg.jpg) no-repeat center; */
 	box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
     text-align: center;
 }
@@ -217,7 +216,7 @@ a{color:inherit;text-decoration:none}
 	transform:rotate(0);
 }
 
-.hr{
+.hr {
 	height:2px;
 	margin:60px 0 50px 0;
 	background:rgba(255,255,255,.2);

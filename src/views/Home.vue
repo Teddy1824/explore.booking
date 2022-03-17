@@ -11,7 +11,7 @@
         </div>
     </div>
                                     
-<div class='btn first'>Explore</div>
+<router-link to="/user/login"><div class='btn first'>Explore</div></router-link>
         </section>
 </template>
 
@@ -28,10 +28,6 @@ export default {
     height: 100vh;
     position: relative;
     background-size: cover;
-    /* -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    -msn-background-size: cover; */
 }
 .header .overlay{
     background: rgba(0, 0, 0, 0.58);

@@ -1,29 +1,31 @@
 <template>
 <section class="contact">
   
-  <h1 class="section-header">Contact</h1>
-  <div class="contact-page">
+  <h1 class="section-header">Contact Us&#128521;</h1>
+  <hr class="divider">
+  <h1 class="display-3"> If you have any enquiries about our services,<br> please feel free to contact us below!</h1>
+  <div class="contact-page">                
   <div class="contact-wrapper">
   
   <!-- Left contact page --> 
     
-    <form id="contact-form" class="form-horizontal" role="form">
+    <form id="contact-form" class="form-horizontal" role="form" @submit.prevent="handleSubmit">
        
       <div class="form-group">
         <div class="col-sm-12">
-          <input type="text" class="form-control" id="name" placeholder="NAME" name="name" value="" required>
+          <input type="text" class="form-control" id="name" placeholder="NAME" name="name" required v-model="text">
         </div>
       </div>
 
       <div class="form-group">
         <div class="col-sm-12">
-          <input type="email" class="form-control" id="email" placeholder="EMAIL" name="email" value="" required>
+          <input type="email" class="form-control" id="email" placeholder="EMAIL" name="email" required v-model="email">
         </div>
       </div>
 
-      <textarea class="form-control" rows="10" placeholder="MESSAGE" name="message" required></textarea>
+      <textarea class="form-control" rows="10" placeholder="MESSAGE" name="message" required v-model="textarea"></textarea>
        <br/>
-      <button class="btn btn-primary send-button" id="submit" type="submit" value="SEND">
+      <button class="btns btn-primary send-button" id="submit" type="submit" value="SEND">
         <div class="alt-send-button">
           <i class="fa fa-paper-plane"></i><span class="send-text">SEND</span>
         </div>
@@ -75,35 +77,68 @@
 
 <script>
 export default {
+   data() {
+     return {
+       text: '',
+       email: '',
+       textarea: ''
+     }
+   },
+   methods: {
+     handleSubmit() {
+       console.log(this.email, this.text, this.textarea),
 
+       fetch('https://nodejs-project-testimonial-api.herokuapp.com/contact', {
+  method: 'POST',
+  body: JSON.stringify({
+    name: this.name,
+    email: this.email,
+    textarea: this.textarea,
+  }),
+  headers: {
+    'Content-type': 'application/json; charset=UTF-8',
+  },
+})
+  .then((response) => response.json())
+  .then((json) => {
+    alert(json.msg)
+    this.text = '',
+    this.email = '',
+    this.textarea = ''
+    })
+  .catch((e) => alert(e.msg));
+     }
+   },
 }
+
 </script>
 
 <style>
   .contact {
-    background:url("https://images.unsplash.com/photo-1617093888347-f73de2649f94?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80");
+    background:url("https://images.unsplash.com/photo-1599875039954-843cb065a3a9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80");
     color: #FFF;
     height: 100vh;
     position: relative;
-    background-size: cover;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    -msn-background-size: cover;
+    background-size: cover; 
+  }
+  
+  .display-3 {
+    text-align : center;
+    font-family: system-ui;
+    margin-bottom: 20px;
   }
 
-/* #contact {
-  width: 100%;
-  height: 100%;
-} */
+  .divider {
+    width: 510px;
+  }
 
 .section-header {
   text-align: center;
   margin: 0 auto;
-  padding: 40px 0;
+  padding: 35px 0;
   font: 300 60px 'Oswald', sans-serif;
   /* color: #fff; */
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   letter-spacing: 6px;
   /* box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19); */
 }
@@ -131,8 +166,8 @@ export default {
 .form-control, 
 textarea {
   max-width: 400px;
-  background-color: #000;
-  /* color: #fff; */
+  background-color: rgb(0 0 0 / 50%);
+  color: #fff;
   letter-spacing: 1px;
 }
 
@@ -148,6 +183,7 @@ textarea {
   width: 400px;
   height: 34px;
   transition: all .2s ease-in-out;
+  margin-top: 4px;
 }
 
 .send-text {

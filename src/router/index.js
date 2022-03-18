@@ -5,6 +5,7 @@ import Login from '../views/Login.vue'
 // import About from '../views/About.vue'
 import Places from '../views/Locations.vue'
 import Contact from '../views/Contact.vue'
+import Booking from '../views/Bookings.vue'
 
 const routes = [
   {
@@ -36,6 +37,11 @@ const routes = [
     path: '/contact',
     name: 'Contact',
     component: Contact
+  },
+  {
+    path: '/booking',
+    name: 'Booking',
+    component: Booking
   }
 
 ]
@@ -45,15 +51,15 @@ const router = createRouter({
   routes
 })
 
-router.beforeEach((to, from, next) => {
-  const publicPages = ['/user/login', '/',];
-  const authRequired = !publicPages.includes(to.path);
-  const loggedIn = localStorage.getItem('user');
-  if (authRequired && !loggedIn) {
-    next('/user/login');
-  } else {
-    next();
-  }
-});
+// router.beforeEach((to, from, next) => {
+//   const publicPages = ['/user/login', '/',];
+//   const authRequired = !publicPages.includes(to.path);
+//   const loggedIn = localStorage.getItem('user');
+//   if (authRequired && !loggedIn) {
+//     next('/user/login');
+//   } else {
+//     next();
+//   }
+// });
 
 export default router

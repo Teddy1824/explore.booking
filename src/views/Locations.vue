@@ -1,25 +1,21 @@
 <template>
   <section class="header2">
-    <div class="container">
       <div class="row">
-        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" v-for="place in places" :key="place.id">
-    <div class="cards" v-if="places.length">
-    <div class="cards__item">
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" v-for="destination in locations" :key="destination.id">
+    <div class="cards__item" >
     <div class="card">
       <div class="card__image">
-        <img :src="place.img">
+        <img :src="destination.img[0]">
       </div>
       <div class="card__content">
-        <div class="card__title">{{ place.place }}</div>
-        <p class="card_text">{{ place.category }}</p>
-        <p class="card_text">{{ place.location }}</p>
-        <p class="card__text">{{ place.description }}</p>
+        <div class="card__title">{{ destination.place }}</div>
+        <h2 class="card__text">{{ destination.category }}</h2>
+        <h2 class="card__text">{{ destination.location }}</h2>
+        <h2 class="card__text">{{ destination.description }}</h2>
         <button class="btn1 btn1--block card__btn">Button</button>
       </div>
     </div>
   </div>
-    </div>
-    </div>
     </div>
     </div>
   </section>
@@ -34,14 +30,11 @@ export default {
   },
   mounted() {
      fetch('https://booking-system-explore-booking.herokuapp.com/places', {
-      //  headers: {
-      //    Authorization: `Bearer ${localStorage.getItem('jwt')}`
-      //  }
      })
 
   .then(res => res.json())
   .then(json => {
-      console.log(json);
+      console.table(json);
   this.locations = json;
   })
   .catch(err => console.log(err));
@@ -55,16 +48,13 @@ export default {
     background: url("https://images.unsplash.com/photo-1563286130-945bc9d7803c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2112&q=80") center center fixed;
     color: #FFF;
     height: 100vh;
-    position: relative;
+    /* position: relative; */
     background-size: cover;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    -msn-background-size: cover;
 }
 
 img {
   height: auto;
+  width: 100%;
   max-width: 100%;
   vertical-align: middle;
 }
@@ -80,7 +70,7 @@ img {
   width: 100%;
 }
 .cards {
-  display: flex;
+  /* display: flex; */
   flex-wrap: wrap;
   list-style: none;
   margin: 0;
@@ -92,12 +82,12 @@ img {
 }
 @media (min-width: 40rem) {
   .cards__item {
-    width: 50%;
+    width: 100%;
   }
 }
 @media (min-width: 56rem) {
   .cards__item {
-    width: 33.3333%;
+    width: 100%;
   }
 }
 .card {
@@ -112,10 +102,9 @@ img {
   filter: contrast(100%);
 }
 .card__content {
-  display: flex;
-  flex: 1 1 auto;
   flex-direction: column;
   padding: 1rem;
+  text-align: center;
 }
 .card__image {
   background-position: center center;
@@ -138,9 +127,7 @@ img {
     padding-top: 66.6%;
   }
 }
-/* .card__image--fence {
-  background-image: url(https://unsplash.it/800/600?image=59);
-} */
+
 .card__title {
   color: #696969;
   font-size: 1.25rem;
@@ -150,8 +137,10 @@ img {
 }
 .card__text {
   flex: 1 1 auto;
-  font-size: 0.875rem;
+  font-size: 1.5rem;
   line-height: 1.5;
   margin-bottom: 1.25rem;
+  color: black;
+  font-family: system-ui;
 }
 </style>

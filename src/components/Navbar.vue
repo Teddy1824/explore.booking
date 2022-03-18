@@ -22,6 +22,7 @@
               <li><router-link to="/">Home</router-link></li>
               <li><router-link to="/places">Explore!</router-link></li>
               <li><router-link to="/contact">Contact</router-link></li>
+              <li><router-link to="/booking"><span class="iconify" data-icon="clarity:house-line"></span></router-link></li>
             </ul>
               <div class="search-wrap">
                 <input ref="input" class="search-input" placeholder="Search">

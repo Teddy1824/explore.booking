@@ -5,20 +5,17 @@
 	<div class="login-html">
 		<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
 		<input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
-		<div @submit.prevent="login" class="login-form">
+		<form @submit.prevent="login" class="login-form">
 			<div class="sign-in-htm">
 				<div class="group">
 					<label for="user" class="label">Username</label>
-					<input v-model="username" id="user" type="text" class="input">
+					<input v-model="name" id="user" type="text" class="input">
 				</div>
 				<div class="group">
 					<label for="pass" class="label">Password</label>
 					<input v-model="password" id="pass" type="password" class="input" data-type="password">
 				</div>
-				<!-- <div class="group">
-					<input id="check" type="checkbox" class="check" checked>
-					<label for="check"><span class="icon"></span> Keep me Signed in</label>
-				</div> -->
+			{{password}}
 				<div class="group">
 					<input type="submit" class="button" value="Sign In">
 				</div>
@@ -27,19 +24,24 @@
 			     <label for="tab-2">Not a member?, click here to be a member.</label>
 				</div>
 			</div>
-			<div @submit.prevent="register" class="sign-up-htm">
+		</form>
+			<form @submit.prevent="register" class="sign-up-htm">
 				<div class="group">
 					<label for="user" class="label">Username</label>
 					<input v-model="username" id="user" type="text" class="input">
 				</div>
 				<div class="group">
-					<label for="pass" class="label">Password</label>
-					<input v-model="password" id="pass" type="password" class="input" data-type="password">
-				</div>
-				<div class="group">
 					<label for="pass" class="label">Email Address</label>
 					<input v-model="email" id="pass" type="text" class="input">
 				</div>
+				<div class="group">
+					<label for="pass" class="label">Password</label>
+					<input v-model="password" id="pass" type="password" class="input" data-type="password">
+				</div>
+				<!-- <div class="group">
+					<label for="pass" class="label">Password</label>
+					<input v-model="password" id="pass" type="password" class="input" data-type="password">
+				</div> -->
 				<div class="group">
 					<input type="submit" class="button" value="Sign Up">
 				</div>
@@ -47,8 +49,7 @@
 				<div class="foot-lnk">
 					<label for="tab-1">Already Member?</label>
 				</div>
-			</div>
-		</div>
+			</form>
 	</div>
   </div>
 </div>
@@ -57,10 +58,102 @@
 
 <script>
 export default {
-   
-}
-</script>
+  data() {
+    return {
+      name: "",
+	  email: "",
+	  phone_number: "",
+      password: "",
+    }
+  },
+  methods: {
+    login() {
+      const details = {
+        name: this.name,
+        password: this.password,
+      };
+      console.log(details);
 
+      fetch("https://booking-system-explore-booking.herokuapp.com/user/login", {
+        method: "POST",
+        body: JSON.stringify(details),
+		// mode: "no-cors",
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      })
+        .then((response) => response.json())
+        .then((json) => {
+          console.log(json);
+          localStorage.setItem("jwt", json.jwt);
+          alert("User logged in");
+          this.$router.push('/places');
+        })
+        .catch((err) =>  {
+          alert(err);
+        });
+    },
+	register() {
+      fetch("https://booking-system-explore-booking.herokuapp.com/user/signup", {
+        method: "POST",
+        body: JSON.stringify({
+          name: this.name,
+          email: this.email,
+          phone_number: this.phone_number,
+          password: this.password,
+        }),
+		mode: "no-cors",
+        headers: {
+			"Content-type": "application/json; charset=UTF-8",
+		//   "Access-Control-Allow-Origin": "https://booking-system-explore-booking.herokuapp.com/"
+        },
+      })
+        .then((response) => response.json())
+        .then((user) => {
+          console.log(user);
+          alert("User registered");
+          localStorage.getItem("jwt", user.jwt);
+          this.$router.push({ name: "Login" });
+        })
+        .catch((err) => {
+          alert(err);
+        });
+    },
+  },
+};
+
+// export default {
+//   data() {
+//     return 
+//   },
+//   methods: {
+//     register() {
+//       fetch("https://booking-system-explore-booking.herokuapp.com/user/signup", {
+//         method: "POST",
+//         body: JSON.stringify({
+//           name: this.name,
+//           email: this.email,
+//           phone_number: this.phone_number,
+//           password: this.password,
+//         }),
+//         headers: {
+//           "Content-type": "application/json; charset=UTF-8",
+//         },
+//       })
+//         .then((response) => response.json())
+//         .then((user) => {
+//           console.log(user);
+//           alert("User registered");
+//           localStorage.getItem("jwt", user.jwt);
+//           this.$router.push({ name: "Login" });
+//         })
+//         .catch((err) => {
+//           alert(err);
+//         });
+//     },
+//   },
+// };
+</script>
 <style>
  .header1{
     background: url("https://images.unsplash.com/photo-1533743914085-403451366d53?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80") center center fixed;

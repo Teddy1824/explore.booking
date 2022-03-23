@@ -1,19 +1,33 @@
 <template>
   <section class="booking">
-       <div id="booking" class="section">
+<div class="wrapper">
+<div class="product-img">
+  <img src="" height="420" width="327" class="s-img">
+</div>
+<div class="product-info">
+  <div class="product-text">
+    <h1 class="s-text">Harvest Vase</h1>
+    <h2 class="s-text1">by studio and friends</h2>
+    <p class="s-text2">Harvest Vases are a reinterpretation<br> of peeled fruits and vegetables as<br> functional objects. The surfaces<br> appear to be sliced and pulled aside,<br> allowing room for growth. </p>
+  </div>
+  <div class="product-price-btn">
+    <p><span class="price">78</span>R</p>
+    <button type="button">buy now</button>
+  </div>
+</div>
     <div class="section-center">
-        <div class="container">
-            <div class="row1">
-                    <!-- <div class="reservation">
-
-                    </div> -->
+       
                 <div class="booking-form">
+        <div class="container">
+            <div class="row1 align-items-center justify-content-center" id="slide">
+    <div class="col-md-6 col-lg-6">
                     <div class="form-header">
                         <h1>Make your reservation</h1>
                     </div>
                     
 
                     <form>
+                        {{ id }}
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -84,17 +98,29 @@
                             <button class="submit-btn">Book Now</button>
                         </div>
                     </form>
+</div>     
+                
+
+
+
+
+    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+
   </section>
 </template>
 
 <script>
 export default {
-
+ props: ['id'],
+//  data() {
+//      return {
+//          id: this.$route.params.id
+//      }
+//  }
 }
 </script>
 
@@ -106,6 +132,123 @@ export default {
    /* position: relative; */
    background-size: cover;
  }
+.wrapper {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-top: 130px;
+}
+
+.s-img {
+    height: 506px;
+}
+
+.product-img {
+  float: left;
+  /* height: 420px; */
+  width: 327px;
+}
+
+.product-img .s-img {
+  border-radius: 7px 0 0 7px;
+}
+
+.product-info {
+  float: left;
+  height: 506px;
+  width: 327px;
+  /* border-radius: 0 7px 10px 7px; */
+  background-color: #ffffff;
+}
+
+.product-text {
+  height: 300px;
+  width: 327px;
+  margin-top: 25px;
+}
+
+.product-text .s-text {
+  margin: 0 0 0 38px;
+  padding-top: 52px;
+  font-size: 34px;
+  color: #474747;
+}
+
+.product-text .s-text,
+.product-price-btn .s-text2 {
+  font-family: 'Bentham', serif;
+}
+
+.product-text .s-text {
+  margin: 0 0 47px 38px;
+  font-size: 13px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: #d2d2d2;
+  letter-spacing: 0.2em;
+}
+
+.product-text .s-text2 {
+  height: 125px;
+  margin: 0 0 0 38px;
+  font-family: 'Playfair Display', serif;
+  color: #8d8d8d;
+  line-height: 1.7em;
+  font-size: 15px;
+  font-weight: lighter;
+  overflow: hidden;
+}
+
+.product-price-btn {
+  height: 103px;
+  width: 327px;
+  margin-top: 17px;
+  position: relative;
+}
+
+.product-price-btn .s-text2 {
+  display: inline-block;
+  position: absolute;
+  top: -13px;
+  height: 50px;
+  font-family: 'Trocchi', serif;
+  margin: 0 0 0 38px;
+  font-size: 28px;
+  font-weight: lighter;
+  color: #474747;
+}
+
+.price {
+  display: inline-block;
+  height: 50px;
+  font-family: 'Suranna', serif;
+  font-size: 34px;
+}
+
+.product-price-btn button {
+  float: right;
+  display: inline-block;
+  height: 50px;
+  width: 176px;
+  margin: 0 40px 0 16px;
+  box-sizing: border-box;
+  border: transparent;
+  border-radius: 60px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #ffffff;
+  background-color: #9cebd5;
+  cursor: pointer;
+  outline: none;
+}
+
+.product-price-btn button:hover {
+  background-color: #79b0a1;
+}
 
  .section {
     position: relative;

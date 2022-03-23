@@ -12,7 +12,9 @@
         <h2 class="card__text">{{ destination.category }}</h2>
         <h2 class="card__text">{{ destination.location }}</h2>
         <h2 class="card__text">{{ destination.description }}</h2>
-        <button class="btn1 btn1--block card__btn">Button</button>
+        <router-link :to="{ name: 'Booking', params: { id: destination.id }}">
+          <button class="btn1 btn1--block card__btn">Button</button>
+          </router-link>
       </div>
     </div>
   </div>
@@ -36,6 +38,7 @@ export default {
   .then(json => {
       console.table(json);
   this.locations = json;
+  console.log(this.locations)
   })
   .catch(err => console.log(err));
   },

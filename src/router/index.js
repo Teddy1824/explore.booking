@@ -29,9 +29,10 @@ const routes = [
     component: Contact
   },
   {
-    path: '/booking',
+    path: '/booking/:id',
     name: 'Booking',
-    component: Booking
+    component: Booking,
+    props: true
   }
 
 ]
@@ -41,15 +42,15 @@ const router = createRouter({
   routes
 })
 
-router.beforeEach((to, from, next) => {
-  const publicPages = ['/user/login', '/', '/contact'];
-  const authRequired = !publicPages.includes(to.path);
-  const loggedIn = localStorage.getItem('user');
-  if (authRequired && !loggedIn) {
-    next('/user/login');
-  } else {
-    next();
-  }
-});
+// router.beforeEach((to, from, next) => {
+//   const publicPages = ['/user/login', '/', '/contact'];
+//   const authRequired = !publicPages.includes(to.path);
+//   const loggedIn = localStorage.getItem('user');
+//   if (authRequired && !loggedIn) {
+//     next('/user/login');
+//   } else {
+//     next();
+//   }
+// });
 
 export default router

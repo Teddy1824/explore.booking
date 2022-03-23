@@ -71,6 +71,7 @@ export default {
     font-weight: bold;
     color: #FFF;
     font-family: 'Montserrat', sans-serif;
+    margin-top: 7px;
 }
 
 .navbar-default .navbar-nav>li>a {

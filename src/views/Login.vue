@@ -9,11 +9,11 @@
 			<div class="sign-in-htm">
 				<div class="group">
 					<label for="user" class="label">Username</label>
-					<input v-model="name" id="user" type="text" class="input">
+					<input v-model="name" id="user" type="text" class="input" required>
 				</div>
 				<div class="group">
 					<label for="pass" class="label">Password</label>
-					<input v-model="password" id="pass" type="password" class="input" data-type="password">
+					<input v-model="password" id="pass" type="password" class="input" data-type="password" required>
 				</div>
 			{{password}}
 				<div class="group">
@@ -54,6 +54,7 @@
   </div>
 </div>
 </section>
+
 </template>
 
 <script>
@@ -82,11 +83,16 @@ export default {
           "Content-type": "application/json; charset=UTF-8",
         },
       })
-        .then((response) => response.json())
+        .then((response) => response.json(body))
         .then((json) => {
+					  throw new Error(body.err)
+
+		  localStorage.setItem("jwt", json.jwt);
           console.log(json);
-          localStorage.setItem("jwt", json.jwt);
-          alert("User logged in");
+
+console.log(body);
+        //   alert("User logged in");
+
           this.$router.push('/places');
         })
         .catch((err) =>  {
@@ -100,7 +106,7 @@ export default {
           name: this.name,
           email: this.email,
           phone_number: this.phone_number,
-          password: this.password,
+          password: hashedPassword,
         }),
 		mode: "no-cors",
         headers: {

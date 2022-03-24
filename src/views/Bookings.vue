@@ -2,7 +2,7 @@
   <section class="booking">
 <div class="wrapper">
 <div class="product-img">
-  <img src="" height="420" width="327" class="s-img">
+  <img :src="destination.img[0]" height="420" width="327" class="s-img">
 </div>
 <div class="product-info">
   <div class="product-text">
@@ -11,8 +11,7 @@
     <p class="s-text2">Harvest Vases are a reinterpretation<br> of peeled fruits and vegetables as<br> functional objects. The surfaces<br> appear to be sliced and pulled aside,<br> allowing room for growth. </p>
   </div>
   <div class="product-price-btn">
-    <p><span class="price">78</span>R</p>
-    <button type="button">buy now</button>
+    <p><span class="price">R78</span></p>
   </div>
 </div>
     <div class="section-center">
@@ -98,12 +97,7 @@
                             <button class="submit-btn">Book Now</button>
                         </div>
                     </form>
-</div>     
-                
-
-
-
-
+</div>
     </div>
                 </div>
             </div>
@@ -116,11 +110,11 @@
 <script>
 export default {
  props: ['id'],
-//  data() {
-//      return {
-//          id: this.$route.params.id
-//      }
-//  }
+
+ mounted() {
+    fetch('https://booking-system-explore-booking.herokuapp.com/places' + this.id, {
+    })
+ }
 }
 </script>
 
@@ -224,6 +218,8 @@ export default {
   height: 50px;
   font-family: 'Suranna', serif;
   font-size: 34px;
+  color: black;
+  margin-left: 118px;
 }
 
 .product-price-btn button {

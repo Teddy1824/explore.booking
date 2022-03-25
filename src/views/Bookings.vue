@@ -1,8 +1,9 @@
 <template>
   <section class="booking">
+      <!-- <div class=""> -->
 <div class="wrapper">
 <div class="product-img">
-  <img :src="destination.img[0]" height="420" width="327" class="s-img">
+  <img src="" height="420" width="327" class="s-img">
 </div>
 <div class="product-info">
   <div class="product-text">
@@ -26,7 +27,7 @@
                     
 
                     <form>
-                        {{ id }}
+                        {{ _id }}
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -134,7 +135,7 @@ export default {
 }
 
 .s-img {
-    height: 506px;
+    height: 486px;
 }
 
 .product-img {
@@ -149,7 +150,7 @@ export default {
 
 .product-info {
   float: left;
-  height: 506px;
+  height: 486px;
   width: 327px;
   /* border-radius: 0 7px 10px 7px; */
   background-color: #ffffff;

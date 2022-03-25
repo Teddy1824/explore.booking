@@ -1,6 +1,8 @@
 <template>
   <section class="header2">
-      <div class="row">
+    
+    
+      <div v-if="locations" class="row">
         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" v-for="destination in locations" :key="destination.id">
     <div class="cards__item" >
     <div class="card">
@@ -12,7 +14,7 @@
         <h2 class="card__text">{{ destination.category }}</h2>
         <h2 class="card__text">{{ destination.location }}</h2>
         <h2 class="card__text">{{ destination.description }}</h2>
-        <router-link :to="{ name: 'Booking', params: { id: destination.id }}">
+        <router-link :to="{ name: 'Booking', params: { id: destination._id }}">
           <button class="btn1 btn1--block card__btn">Button</button>
           </router-link>
       </div>
@@ -20,6 +22,12 @@
   </div>
     </div>
     </div>
+    <div v-else class="lds-ellipsis">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      </div>
   </section>
 </template>
 
@@ -47,6 +55,64 @@ export default {
 
 
 <style>
+
+ .lds-ellipsis {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-ellipsis div {
+  position: absolute;
+  top: 33px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #fff;
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.lds-ellipsis div:nth-child(1) {
+  left: 8px;
+  animation: lds-ellipsis1 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(2) {
+  left: 8px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(3) {
+  left: 32px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(4) {
+  left: 56px;
+  animation: lds-ellipsis3 0.6s infinite;
+}
+@keyframes lds-ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes lds-ellipsis3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes lds-ellipsis2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(24px, 0);
+  }
+}
+
+
  .header2{
     background: url("https://images.unsplash.com/photo-1563286130-945bc9d7803c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2112&q=80") center center fixed;
     color: #FFF;

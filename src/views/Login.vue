@@ -69,38 +69,31 @@ export default {
   },
   methods: {
     login() {
-      const details = {
-        name: this.name,
-        password: this.password,
-      };
-      console.log(details);
-
-      fetch("https://booking-system-explore-booking.herokuapp.com/user/login", {
+      fetch("https://booking-system-explore-booking.herokuapp.com/users/login", {
         method: "POST",
-        body: JSON.stringify(details),
-		// mode: "no-cors",
+        body: JSON.stringify({
+			name: this.name,
+			password: this.password
+		}),
+		// mode: "no-cors",	
         headers: {
           "Content-type": "application/json; charset=UTF-8",
         },
       })
-        .then((response) => response.json(body))
+        .then((res) => res.json())
         .then((json) => {
-					  throw new Error(body.err)
-
-		  localStorage.setItem("jwt", json.jwt);
-          console.log(json);
-
-console.log(body);
-        //   alert("User logged in");
-
-          this.$router.push('/places');
+		localStorage.setItem("jwt", json.jwt);
+        console.log(json);
+        console.log(json.jwt);
+        alert("User logged in");
+        this.$router.push('/places');
         })
         .catch((err) =>  {
           alert(err);
         });
     },
 	register() {
-      fetch("https://booking-system-explore-booking.herokuapp.com/user/signup", {
+      fetch("https://booking-system-explore-booking.herokuapp.com/users/signup", {
         method: "POST",
         body: JSON.stringify({
           name: this.name,
@@ -258,7 +251,7 @@ a{color:inherit;text-decoration:none}
 	background:rgb(255 255 255 / 15%);
 }
 .login-form .group input[data-type="password"]{
-	text-security:circle;
+	/* text-security:circle; */
 	-webkit-text-security:circle;
 }
 .login-form .group .label{

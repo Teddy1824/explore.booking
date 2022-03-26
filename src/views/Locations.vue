@@ -7,13 +7,14 @@
     <div class="cards__item" >
     <div class="card">
       <div class="card__image">
-        <img :src="destination.img[0]">
+        <img :src="destination.img[0]"  title="Click below to see more">
       </div>
       <div class="card__content">
         <div class="card__title">{{ destination.place }}</div>
         <h2 class="card__text">{{ destination.category }}</h2>
         <h2 class="card__text">{{ destination.location }}</h2>
         <h2 class="card__text">{{ destination.description }}</h2>
+        <h1 class="card__text">R{{ destination.price }}</h1>
         <router-link :to="{ name: 'Booking', params: { id: destination._id }}">
           <button class="btn1 btn1--block card__btn">Button</button>
           </router-link>
@@ -22,12 +23,10 @@
   </div>
     </div>
     </div>
-    <div v-else class="lds-ellipsis">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      </div>
+<div v-else class="lds-ripple">
+  <div></div>
+  <div></div>
+  </div>
   </section>
 </template>
 
@@ -56,66 +55,47 @@ export default {
 
 <style>
 
- .lds-ellipsis {
+.lds-ripple {
   display: inline-block;
   position: relative;
   width: 80px;
   height: 80px;
+  margin-left: 50%;
+  margin-top: 300px;
 }
-.lds-ellipsis div {
+.lds-ripple div {
   position: absolute;
-  top: 33px;
-  width: 13px;
-  height: 13px;
+  border: 4px solid black;
+  opacity: 1;
   border-radius: 50%;
-  background: #fff;
-  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+  animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+  height: 100%;
+  width: 100%;
+  background-color: white;
 }
-.lds-ellipsis div:nth-child(1) {
-  left: 8px;
-  animation: lds-ellipsis1 0.6s infinite;
+.lds-ripple div:nth-child(2) {
+  animation-delay: -0.5s;
 }
-.lds-ellipsis div:nth-child(2) {
-  left: 8px;
-  animation: lds-ellipsis2 0.6s infinite;
-}
-.lds-ellipsis div:nth-child(3) {
-  left: 32px;
-  animation: lds-ellipsis2 0.6s infinite;
-}
-.lds-ellipsis div:nth-child(4) {
-  left: 56px;
-  animation: lds-ellipsis3 0.6s infinite;
-}
-@keyframes lds-ellipsis1 {
+@keyframes lds-ripple {
   0% {
-    transform: scale(0);
+    top: 36px;
+    left: 36px;
+    width: 0;
+    height: 0;
+    opacity: 1;
   }
   100% {
-    transform: scale(1);
+    top: 0px;
+    left: 0px;
+    width: 72px;
+    height: 72px;
+    opacity: 0;
   }
 }
-@keyframes lds-ellipsis3 {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(0);
-  }
-}
-@keyframes lds-ellipsis2 {
-  0% {
-    transform: translate(0, 0);
-  }
-  100% {
-    transform: translate(24px, 0);
-  }
-}
-
 
  .header2{
     background: url("https://images.unsplash.com/photo-1563286130-945bc9d7803c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2112&q=80") center center fixed;
-    color: #FFF;
+    /* color: #FFF; */
     height: 100vh;
     /* position: relative; */
     background-size: cover;

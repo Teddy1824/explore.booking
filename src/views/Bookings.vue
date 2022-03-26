@@ -1,18 +1,18 @@
 <template>
   <section class="booking">
       <!-- <div class=""> -->
-<div class="wrapper">
+<div class="wrapper" v-if="place">
 <div class="product-img">
-  <img src="" height="420" width="327" class="s-img">
+  <img :src="place.img[0]" height="420" width="327" class="s-img">
 </div>
 <div class="product-info">
   <div class="product-text">
-    <h1 class="s-text">Harvest Vase</h1>
-    <h2 class="s-text1">by studio and friends</h2>
+    <h1 class="s-text">{{place.place}}</h1>
+    <h2 class="s-text1">{{ place.description}}</h2>
     <p class="s-text2">Harvest Vases are a reinterpretation<br> of peeled fruits and vegetables as<br> functional objects. The surfaces<br> appear to be sliced and pulled aside,<br> allowing room for growth. </p>
   </div>
   <div class="product-price-btn">
-    <p><span class="price">R78</span></p>
+    <p><span class="price">R{{ place.price }}</span></p>
   </div>
 </div>
     <div class="section-center">
@@ -111,11 +111,18 @@
 <script>
 export default {
  props: ['id'],
-
+ data() {
+    return {
+        place: null
+    }
+ },
  mounted() {
-    fetch('https://booking-system-explore-booking.herokuapp.com/places' + this.id, {
-    })
- }
+    fetch('https://booking-system-explore-booking.herokuapp.com/places' + this.id) 
+        .then((res) => res.json())
+        .then((json) => {
+            this.place = json;
+        })
+    }
 }
 </script>
 

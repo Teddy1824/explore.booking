@@ -39,30 +39,24 @@
       <div class="direct-contact-container">
 
         <ul class="contact-list">
-          <li class="list-item"><i class="fa fa-map-marker fa-2x"><span class="contact-text place">City, State</span></i></li>
+          <li class="list-item"><i class="fa fa-map-marker fa-2x"><span class="contact-text place">Cape Town, South Africa</span></i></li>
           
-          <li class="list-item"><i class="fa fa-phone fa-2x"><span class="contact-text phone"><a href="tel:1-212-555-5555" title="Give me a call">(212) 555-2368</a></span></i></li>
+          <li class="list-item"><i class="fa fa-phone fa-2x"><span class="contact-text phone"><a href="tel:081-724-5057" title="Give me a call">(081) 724-5057</a></span></i></li>
           
-          <li class="list-item"><i class="fa fa-envelope fa-2x"><span class="contact-text gmail"><a href="mailto:#" title="Send me an email">hitmeup@gmail.com</a></span></i></li>
+          <li class="list-item"><i class="fa fa-envelope fa-2x"><span class="contact-text gmail"><a href="mailto:bearnomangola7@gmail.com" title="Send me an email">bearnomangola7@gmail.com</a></span></i></li>
           
         </ul>
 
         <hr>
-        <ul class="social-media-list">
-          <li><a href="#" target="_blank" class="contact-icon">
+        <!-- <ul class="social-media-list">
+          <li><a href="https://github.com/Teddy1824" target="_blank" class="contact-icon">
             <i class="fa fa-github" aria-hidden="true"></i></a>
           </li>
-          <li><a href="#" target="_blank" class="contact-icon">
+          <li><a href="https://codepen.io/teddy1824" target="_blank" class="contact-icon">
             <i class="fa fa-codepen" aria-hidden="true"></i></a>
-          </li>
-          <li><a href="#" target="_blank" class="contact-icon">
-            <i class="fa fa-twitter" aria-hidden="true"></i></a>
-          </li>
-          <li><a href="#" target="_blank" class="contact-icon">
-            <i class="fa fa-instagram" aria-hidden="true"></i></a>
           </li>       
         </ul>
-        <hr>
+        <hr> -->
 
         <div class="copyright">&copy; ALL OF THE RIGHTS RESERVED</div>
 
@@ -302,9 +296,14 @@ textarea {
 
 .copyright {
   font: 200 14px 'Oswald', sans-serif;
-  color: #555;
+  color: #fff;
   letter-spacing: 1px;
   text-align: center;
+}
+
+.direct-contact-container {
+    max-width: 400px;
+    margin-top: 60px;
 }
 
 hr {
